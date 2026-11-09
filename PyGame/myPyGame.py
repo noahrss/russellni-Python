@@ -31,6 +31,9 @@ done = False
 # Used to manage how fast the screen updates
 clock = pygame.time.Clock()
 
+xPos = 10
+xSpeed = 10
+
 # -------- Main Program Loop -----------
 while not done:
     # --- Main event loop
@@ -40,6 +43,10 @@ while not done:
 
     # --- Game logic should go here
 
+    xPos += xSpeed
+    if xPos <= 0 or xPos >= size[0]:
+        xSpeed = xSpeed * -1
+
     # --- Screen-clearing code goes here
 
     # Here, we clear the screen to white. Don't put other drawing commands
@@ -48,6 +55,8 @@ while not done:
     # If you want a background image, replace this clear with blit'ing the
     # background image.
     screen.fill(WHITE)
+
+    pygame.draw.rect(screen, RED, [xPos, 50, 20, 25], 0)
 
     # --- Drawing code should go here
 
